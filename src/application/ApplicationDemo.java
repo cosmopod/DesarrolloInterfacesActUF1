@@ -6,7 +6,7 @@ import strategyCalculator.OperationSubt;
 import strategyCalculator.OperationSum;
 
 public class ApplicationDemo {
-
+/*
 	public static void main(String[] args) {
 
 		int a = 10;
@@ -23,5 +23,5 @@ public class ApplicationDemo {
 		System.out.println(result);
 
 	}
-
+*/
 }
