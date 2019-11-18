@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -22,6 +23,11 @@ import javax.swing.border.SoftBevelBorder;
 public class CalculatorFrame extends JFrame {
 
 	private JPanel contentPane;
+	
+	public final int MAX_DISPLAY_NUMBERS = 10;
+	private boolean isAddingNumberToDisplay;
+	private boolean isOperationQueued;
+	private JLabel DisplayText;
 
 	/**
 	 * Launch the application.
@@ -50,30 +56,25 @@ public class CalculatorFrame extends JFrame {
 		contentPane.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JPanel DisplayPanel = new JPanel();
 		DisplayPanel.setBounds(10, 11, 242, 48);
 		DisplayPanel.setBackground(new Color(240, 248, 255));
 		DisplayPanel.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		
-		JLabel DisplayText = new JLabel("0");
+
+		DisplayText = new JLabel("0");
+		DisplayText.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		DisplayText.setHorizontalAlignment(SwingConstants.RIGHT);
 		DisplayText.setFont(new Font("Arial", Font.BOLD, 20));
 		GroupLayout gl_DisplayPanel = new GroupLayout(DisplayPanel);
-		gl_DisplayPanel.setHorizontalGroup(
-			gl_DisplayPanel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_DisplayPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(DisplayText, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		gl_DisplayPanel.setVerticalGroup(
-			gl_DisplayPanel.createParallelGroup(Alignment.LEADING)
-				.addComponent(DisplayText, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-		);
+		gl_DisplayPanel.setHorizontalGroup(gl_DisplayPanel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_DisplayPanel.createSequentialGroup().addContainerGap()
+						.addComponent(DisplayText, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE).addContainerGap()));
+		gl_DisplayPanel.setVerticalGroup(gl_DisplayPanel.createParallelGroup(Alignment.LEADING)
+				.addComponent(DisplayText, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE));
 		DisplayPanel.setLayout(gl_DisplayPanel);
 		contentPane.add(DisplayPanel);
-		
+
 		JPanel NumbersPanel = new JPanel();
 		NumbersPanel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		NumbersPanel.setBounds(10, 80, 242, 170);
@@ -82,91 +83,172 @@ public class CalculatorFrame extends JFrame {
 		
 		JButton btnSeven = new JButton("7");
 		btnSeven.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnSeven.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				SetNumberTodisplay(btnSeven.getText());
+				isAddingNumberToDisplay = true;
+			}
+		});
 		NumbersPanel.add(btnSeven);
-		
+
 		JButton btnEight = new JButton("8");
 		btnEight.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnEight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				SetNumberTodisplay(btnEight.getText());
+				isAddingNumberToDisplay = true;
+			}
+		});
 		NumbersPanel.add(btnEight);
-		
+
 		JButton btnNine = new JButton("9");
 		btnNine.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				SetNumberTodisplay(btnNine.getText());
+				isAddingNumberToDisplay = true;
+			}
+		});
 		NumbersPanel.add(btnNine);
-		
+
 		JButton btnFour = new JButton("4");
 		btnFour.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnFour.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				SetNumberTodisplay(btnFour.getText());
+				isAddingNumberToDisplay = true;
+			}
+		});
 		NumbersPanel.add(btnFour);
-		
+
 		JButton btnFive = new JButton("5");
 		btnFive.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnFive.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				SetNumberTodisplay(btnFive.getText());
+				isAddingNumberToDisplay = true;
+			}
+		});
 		NumbersPanel.add(btnFive);
-		
+
 		JButton btnSix = new JButton("6");
 		btnSix.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnSix.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				SetNumberTodisplay(btnSix.getText());
+				isAddingNumberToDisplay = true;
+			}
+		});
 		NumbersPanel.add(btnSix);
-		
+
 		JButton btnOne = new JButton("1");
 		btnOne.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnOne.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				SetNumberTodisplay(btnOne.getText());
+				isAddingNumberToDisplay = true;
+			}
+		});
 		NumbersPanel.add(btnOne);
-		
+
 		JButton btnTwo = new JButton("2");
 		btnTwo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnTwo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				SetNumberTodisplay(btnTwo.getText());
+				isAddingNumberToDisplay = true;
+			}
+		});
 		NumbersPanel.add(btnTwo);
-		
+
 		JButton btnThree = new JButton("3");
 		btnThree.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnThree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				SetNumberTodisplay(btnThree.getText());
+				isAddingNumberToDisplay = true;
 			}
 		});
 		NumbersPanel.add(btnThree);
-		
+
 		JButton btnCE = new JButton("CE");
+		btnCE.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ResetDisplay();
+			}
+		});
 		btnCE.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		NumbersPanel.add(btnCE);
-		
+
 		JButton btnZero = new JButton("0");
 		btnZero.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnZero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				SetNumberTodisplay(btnZero.getText());
+				isAddingNumberToDisplay = true;
+			}
+		});
 		NumbersPanel.add(btnZero);
-		
+
 		JButton btnAns = new JButton("=");
 		btnAns.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		NumbersPanel.add(btnAns);
-		
+
 		JPanel OperationsPanel = new JPanel();
 		OperationsPanel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		OperationsPanel.setBackground(SystemColor.controlHighlight);
 		OperationsPanel.setBounds(262, 80, 162, 170);
 		contentPane.add(OperationsPanel);
 		OperationsPanel.setLayout(new GridLayout(3, 2, 1, 1));
-		
+
 		JButton btnSum = new JButton("+");
 		btnSum.setForeground(UIManager.getColor("Button.foreground"));
 		btnSum.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnSum.setBackground(new Color(204, 204, 255));
 		OperationsPanel.add(btnSum);
-		
+
 		JButton btnSubs = new JButton("-");
 		btnSubs.setForeground(UIManager.getColor("Button.foreground"));
 		btnSubs.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnSubs.setBackground(new Color(204, 204, 255));
 		OperationsPanel.add(btnSubs);
-		
+
 		JButton btnMult = new JButton("x");
 		btnMult.setForeground(UIManager.getColor("Button.foreground"));
 		btnMult.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnMult.setBackground(new Color(204, 204, 255));
 		OperationsPanel.add(btnMult);
-		
+
 		JButton btnDiv = new JButton("/");
 		btnDiv.setForeground(UIManager.getColor("Button.foreground"));
 		btnDiv.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnDiv.setBackground(new Color(204, 204, 255));
 		OperationsPanel.add(btnDiv);
-		
+
 		JButton btnExp = new JButton("Exp 2");
 		btnExp.setForeground(UIManager.getColor("Button.foreground"));
 		btnExp.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnExp.setBackground(new Color(204, 204, 255));
 		OperationsPanel.add(btnExp);
+	}
+
+	/**
+	 * Methods
+	 */
+	private void SetTextInDisplay(String text) {
+		if(DisplayText.getText().length() <= MAX_DISPLAY_NUMBERS) {
+			DisplayText.setText(text);
+		}
+	}
+	
+	private void SetNumberTodisplay(String num) {
+
+		String displayText = isAddingNumberToDisplay ? DisplayText.getText() + num : num;
+		SetTextInDisplay(displayText);
+	}
+
+	private void ResetDisplay() {
+		isAddingNumberToDisplay = false;
+		DisplayText.setText("0");
 	}
 }

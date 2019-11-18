@@ -1,10 +1,5 @@
 package application;
 
-import strategyCalculator.Context;
-import strategyCalculator.OperationMult;
-import strategyCalculator.OperationSubt;
-import strategyCalculator.OperationSum;
-
 public class ApplicationDemo {
 /*
 	public static void main(String[] args) {
