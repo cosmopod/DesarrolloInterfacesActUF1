@@ -23,6 +23,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import javax.swing.UIManager;
 
 public class CalculatorFrame extends JFrame {
 
@@ -86,30 +87,39 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.setLayout(new GridLayout(4, 3, 1, 1));
 		
 		JButton btnSeven = new JButton("7");
+		btnSeven.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		NumbersPanel.add(btnSeven);
 		
 		JButton btnEight = new JButton("8");
+		btnEight.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		NumbersPanel.add(btnEight);
 		
 		JButton btnNine = new JButton("9");
+		btnNine.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		NumbersPanel.add(btnNine);
 		
 		JButton btnFour = new JButton("4");
+		btnFour.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		NumbersPanel.add(btnFour);
 		
 		JButton btnFive = new JButton("5");
+		btnFive.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		NumbersPanel.add(btnFive);
 		
 		JButton btnSix = new JButton("6");
+		btnSix.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		NumbersPanel.add(btnSix);
 		
 		JButton btnOne = new JButton("1");
+		btnOne.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		NumbersPanel.add(btnOne);
 		
 		JButton btnTwo = new JButton("2");
+		btnTwo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		NumbersPanel.add(btnTwo);
 		
 		JButton btnThree = new JButton("3");
+		btnThree.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnThree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -117,12 +127,15 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.add(btnThree);
 		
 		JButton btnCE = new JButton("CE");
+		btnCE.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		NumbersPanel.add(btnCE);
 		
 		JButton btnZero = new JButton("0");
+		btnZero.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		NumbersPanel.add(btnZero);
 		
 		JButton btnAns = new JButton("=");
+		btnAns.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		NumbersPanel.add(btnAns);
 		
 		JPanel OperationsPanel = new JPanel();
@@ -133,18 +146,33 @@ public class CalculatorFrame extends JFrame {
 		OperationsPanel.setLayout(new GridLayout(3, 2, 1, 1));
 		
 		JButton btnSum = new JButton("+");
+		btnSum.setForeground(UIManager.getColor("Button.foreground"));
+		btnSum.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnSum.setBackground(new Color(204, 204, 255));
 		OperationsPanel.add(btnSum);
 		
 		JButton btnSubs = new JButton("-");
+		btnSubs.setForeground(UIManager.getColor("Button.foreground"));
+		btnSubs.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnSubs.setBackground(new Color(204, 204, 255));
 		OperationsPanel.add(btnSubs);
 		
 		JButton btnMult = new JButton("x");
+		btnMult.setForeground(UIManager.getColor("Button.foreground"));
+		btnMult.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnMult.setBackground(new Color(204, 204, 255));
 		OperationsPanel.add(btnMult);
 		
 		JButton btnDiv = new JButton("/");
+		btnDiv.setForeground(UIManager.getColor("Button.foreground"));
+		btnDiv.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnDiv.setBackground(new Color(204, 204, 255));
 		OperationsPanel.add(btnDiv);
 		
 		JButton btnExp = new JButton("Exp 2");
+		btnExp.setForeground(UIManager.getColor("Button.foreground"));
+		btnExp.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnExp.setBackground(new Color(204, 204, 255));
 		OperationsPanel.add(btnExp);
 	}
 }
