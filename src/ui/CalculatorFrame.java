@@ -168,5 +168,7 @@ public class CalculatorFrame extends JFrame {
 		btnExp.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnExp.setBackground(new Color(204, 204, 255));
 		OperationsPanel.add(btnExp);
+		
+		//cambio
 	}
 }
