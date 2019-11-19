@@ -20,14 +20,20 @@ import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
 
+import application.CalculatorPresenter;
+
 public class CalculatorFrame extends JFrame {
 
 	private JPanel contentPane;
-	
 	public final int MAX_DISPLAY_NUMBERS = 10;
 	private boolean isAddingNumberToDisplay;
-	private boolean isOperationQueued;
 	private JLabel DisplayText;
+
+	/**
+	 * Presenter
+	 */
+	private CalculatorPresenter presenter;
+	private CalculatorPresenter.OperationType operationQueued;
 
 	/**
 	 * Launch the application.
@@ -57,6 +63,8 @@ public class CalculatorFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		presenter = new CalculatorPresenter();
+
 		JPanel DisplayPanel = new JPanel();
 		DisplayPanel.setBounds(10, 11, 242, 48);
 		DisplayPanel.setBackground(new Color(240, 248, 255));
@@ -80,7 +88,7 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.setBounds(10, 80, 242, 170);
 		contentPane.add(NumbersPanel);
 		NumbersPanel.setLayout(new GridLayout(4, 3, 1, 1));
-		
+
 		JButton btnSeven = new JButton("7");
 		btnSeven.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSeven.addActionListener(new ActionListener() {
@@ -236,11 +244,11 @@ public class CalculatorFrame extends JFrame {
 	 * Methods
 	 */
 	private void SetTextInDisplay(String text) {
-		if(DisplayText.getText().length() <= MAX_DISPLAY_NUMBERS) {
+		if (DisplayText.getText().length() <= MAX_DISPLAY_NUMBERS) {
 			DisplayText.setText(text);
 		}
 	}
-	
+
 	private void SetNumberTodisplay(String num) {
 
 		String displayText = isAddingNumberToDisplay ? DisplayText.getText() + num : num;
