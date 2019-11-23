@@ -273,7 +273,7 @@ public class CalculatorFrame extends JFrame {
 		btnExp.setBackground(new Color(204, 204, 255));
 		btnExp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				BtnOperation(OperationType.Mult);
 				ShowSolution();
 			}
@@ -307,7 +307,8 @@ public class CalculatorFrame extends JFrame {
 	}
 
 	private void BtnOperation(OperationType operationType) {
-		if (operationQueued != null) ShowSolution();
+		if (operationQueued != null)
+			ShowSolution();
 		AddDisplayedNumberToStack();
 		operationQueued = operationType;
 		isAddingNumberToDisplay = false;
@@ -334,11 +335,13 @@ public class CalculatorFrame extends JFrame {
 
 	private float ResolveOperation() {
 
-		if (numbersStack.isEmpty() || operationQueued == null) return GetDisplayNumber();
+		if (numbersStack.isEmpty() || operationQueued == null)
+			return GetDisplayNumber();
 		int lastNumberStackIndex = numbersStack.size() - 1;
 		float stackedNumber = numbersStack.get(lastNumberStackIndex);
 		float solution;
-		try { solution = presenter.Operation(stackedNumber, GetDisplayNumber(), operationQueued);
+		try {
+			solution = presenter.Operation(stackedNumber, GetDisplayNumber(), operationQueued);
 		} catch (Exception e) {
 			solution = 0;
 			ShowMessageError();
@@ -350,26 +353,34 @@ public class CalculatorFrame extends JFrame {
 	}
 
 	private void ShowSolution() {
+
+		String displaySolution = GetFormattedSolution(ResolveOperation());
+		DisplayText.setText(displaySolution);
+		isAddingNumberToDisplay = false;
+
+	}
+
+	private String GetFormattedSolution(float numericSolution) {
+		
+		String decimalSolution = "";
+		String roundSolution = "";
+		int decimalPart = 0;
+		String formattedSolution = "";
 		
 		try {
-			String displaySolution = GetFormattedSolution(ResolveOperation());
-			DisplayText.setText(displaySolution);
-			isAddingNumberToDisplay = false;
+			decimalSolution = String.valueOf(numericSolution);
+			roundSolution = String.valueOf((int) numericSolution);
+			decimalPart = Integer.parseInt(decimalSolution.substring(decimalSolution.indexOf('.') + 1));
+			formattedSolution = decimalPart > 0 ? decimalSolution : roundSolution;
 		} catch (NumberFormatException e) {
-			ResetDisplay();
+			formattedSolution = String.valueOf(numericSolution);
+			ShowMessageError();
 		}
+
+		return formattedSolution;
 	}
-	
-	private String GetFormattedSolution(float numericSolution)
-	{
-		String decimalSolution = Double.toString(numericSolution);
-		String roundSolution =   String.valueOf((int) numericSolution);	
-		int decimalPart =  Integer.parseInt(decimalSolution.substring(decimalSolution.indexOf('.') + 1));
-		
-		return decimalPart > 0 ? decimalSolution : roundSolution;
-	}
-	
+
 	private void ShowMessageError() {
-		
+
 	}
 }
