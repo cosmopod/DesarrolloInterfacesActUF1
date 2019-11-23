@@ -260,12 +260,24 @@ public class CalculatorFrame extends JFrame {
 		btnDiv.setForeground(UIManager.getColor("Button.foreground"));
 		btnDiv.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnDiv.setBackground(new Color(204, 204, 255));
+		btnDiv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				BtnOperation(OperationType.Div);
+			}
+		});
 		OperationsPanel.add(btnDiv);
 
 		JButton btnExp = new JButton("Exp 2");
 		btnExp.setForeground(UIManager.getColor("Button.foreground"));
 		btnExp.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnExp.setBackground(new Color(204, 204, 255));
+		btnExp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				BtnOperation(OperationType.Mult);
+				ShowSolution();
+			}
+		});
 		OperationsPanel.add(btnExp);
 	}
 
@@ -295,6 +307,7 @@ public class CalculatorFrame extends JFrame {
 	}
 
 	private void BtnOperation(OperationType operationType) {
+		if (operationQueued != null) ShowSolution();
 		AddDisplayedNumberToStack();
 		operationQueued = operationType;
 		isAddingNumberToDisplay = false;
@@ -321,12 +334,15 @@ public class CalculatorFrame extends JFrame {
 
 	private int ResolveOperation() {
 
-		if (numbersStack.isEmpty() || operationQueued == null)
-			return GetDisplayNumber();
+		if (numbersStack.isEmpty() || operationQueued == null) return GetDisplayNumber();
 		int lastNumberStackIndex = numbersStack.size() - 1;
 		int stackedNumber = numbersStack.get(lastNumberStackIndex);
-
-		int solution = presenter.Operation(stackedNumber, GetDisplayNumber(), operationQueued);
+		int solution;
+		try { solution = presenter.Operation(stackedNumber, GetDisplayNumber(), operationQueued);
+		} catch (Exception e) {
+			solution = 0;
+			ShowMessageError();
+		}
 		ClearNumbersStack();
 		ResetQueuedOperation();
 
@@ -336,5 +352,10 @@ public class CalculatorFrame extends JFrame {
 	private void ShowSolution() {
 		String solution = String.valueOf(ResolveOperation());
 		DisplayText.setText(solution);
+		isAddingNumberToDisplay = false;
+	}
+	
+	private void ShowMessageError() {
+		
 	}
 }
