@@ -23,6 +23,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
 
 import application.CalculatorPresenter;
+import application.CalculatorPresenter.OperationType;
 
 public class CalculatorFrame extends JFrame {
 
@@ -208,6 +209,11 @@ public class CalculatorFrame extends JFrame {
 
 		JButton btnAns = new JButton("=");
 		btnAns.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAns.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ShowSolution();
+			}
+		});
 		NumbersPanel.add(btnAns);
 
 		JPanel OperationsPanel = new JPanel();
@@ -221,18 +227,33 @@ public class CalculatorFrame extends JFrame {
 		btnSum.setForeground(UIManager.getColor("Button.foreground"));
 		btnSum.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnSum.setBackground(new Color(204, 204, 255));
+		btnSum.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				BtnOperation(OperationType.Sum);
+			}
+		});
 		OperationsPanel.add(btnSum);
 
 		JButton btnSubs = new JButton("-");
 		btnSubs.setForeground(UIManager.getColor("Button.foreground"));
 		btnSubs.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnSubs.setBackground(new Color(204, 204, 255));
+		btnSubs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				BtnOperation(OperationType.Subs);
+			}
+		});
 		OperationsPanel.add(btnSubs);
 
 		JButton btnMult = new JButton("x");
 		btnMult.setForeground(UIManager.getColor("Button.foreground"));
 		btnMult.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnMult.setBackground(new Color(204, 204, 255));
+		btnMult.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				BtnOperation(OperationType.Mult);
+			}
+		});
 		OperationsPanel.add(btnMult);
 
 		JButton btnDiv = new JButton("/");
@@ -273,10 +294,16 @@ public class CalculatorFrame extends JFrame {
 		DisplayText.setText("0");
 	}
 
+	private void BtnOperation(OperationType operationType) {
+		AddDisplayedNumberToStack();
+		operationQueued = operationType;
+		isAddingNumberToDisplay = false;
+	}
+
 	/**
 	 * Operations Management
 	 */
-	private void AddToNumbersStack() {
+	private void AddDisplayedNumberToStack() {
 		int currentDisplayNumber = Integer.parseInt(DisplayText.getText());
 		numbersStack.add(currentDisplayNumber);
 	}
@@ -287,15 +314,27 @@ public class CalculatorFrame extends JFrame {
 		}
 	}
 
+	private void ResetQueuedOperation() {
+		if (operationQueued != null)
+			operationQueued = null;
+	}
+
 	private int ResolveOperation() {
 
-		if (numbersStack.isEmpty() || operationQueued == null) return GetDisplayNumber();
+		if (numbersStack.isEmpty() || operationQueued == null)
+			return GetDisplayNumber();
 		int lastNumberStackIndex = numbersStack.size() - 1;
 		int stackedNumber = numbersStack.get(lastNumberStackIndex);
-		
+
 		int solution = presenter.Operation(stackedNumber, GetDisplayNumber(), operationQueued);
-		numbersStack.clear();
-		
+		ClearNumbersStack();
+		ResetQueuedOperation();
+
 		return solution;
+	}
+
+	private void ShowSolution() {
+		String solution = String.valueOf(ResolveOperation());
+		DisplayText.setText(solution);
 	}
 }
