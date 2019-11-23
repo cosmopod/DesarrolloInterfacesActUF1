@@ -28,7 +28,7 @@ import application.CalculatorPresenter.OperationType;
 public class CalculatorFrame extends JFrame {
 
 	private JPanel contentPane;
-	public final int MAX_DISPLAY_NUMBERS = 10;
+	public final int MAX_DISPLAY_NUMBERS = 12;
 	private boolean isAddingNumberToDisplay;
 	private JLabel DisplayText;
 
@@ -290,9 +290,9 @@ public class CalculatorFrame extends JFrame {
 		}
 	}
 
-	private int GetDisplayNumber() {
+	private float GetDisplayNumber() {
 		String displayText = DisplayText.getText();
-		return Integer.parseInt(displayText);
+		return Float.valueOf(displayText);
 	}
 
 	private void SetNumberTodisplay(String num) {
@@ -351,15 +351,19 @@ public class CalculatorFrame extends JFrame {
 
 	private void ShowSolution() {
 		
-		String displaySolution = GetFormattedSolution(ResolveOperation());
-		DisplayText.setText(displaySolution);
-		isAddingNumberToDisplay = false;
+		try {
+			String displaySolution = GetFormattedSolution(ResolveOperation());
+			DisplayText.setText(displaySolution);
+			isAddingNumberToDisplay = false;
+		} catch (NumberFormatException e) {
+			ResetDisplay();
+		}
 	}
 	
 	private String GetFormattedSolution(float numericSolution)
 	{
-		String decimalSolution = Float.toString(numericSolution);
-		String roundSolution = String.valueOf((int)(numericSolution));	
+		String decimalSolution = Double.toString(numericSolution);
+		String roundSolution =   String.valueOf((int) numericSolution);	
 		int decimalPart =  Integer.parseInt(decimalSolution.substring(decimalSolution.indexOf('.') + 1));
 		
 		return decimalPart > 0 ? decimalSolution : roundSolution;
