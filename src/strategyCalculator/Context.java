@@ -8,7 +8,7 @@ public class Context {
 		this.strategy = strategy;
 	}
 	
-	public int ExecuteStategy(int a, int b) {
+	public float ExecuteStategy(float a, float b) {
 		return strategy.DoOpertion(a, b);
 	}
 }

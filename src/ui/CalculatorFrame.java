@@ -41,7 +41,7 @@ public class CalculatorFrame extends JFrame {
 	 * Operations stack
 	 */
 	private CalculatorPresenter.OperationType operationQueued;
-	private List<Integer> numbersStack;
+	private List<Float> numbersStack;
 
 	/**
 	 * Launch the application.
@@ -72,7 +72,7 @@ public class CalculatorFrame extends JFrame {
 		contentPane.setLayout(null);
 
 		presenter = new CalculatorPresenter();
-		numbersStack = new ArrayList<Integer>();
+		numbersStack = new ArrayList<Float>();
 
 		JPanel DisplayPanel = new JPanel();
 		DisplayPanel.setBounds(10, 11, 242, 48);
@@ -317,7 +317,7 @@ public class CalculatorFrame extends JFrame {
 	 * Operations Management
 	 */
 	private void AddDisplayedNumberToStack() {
-		int currentDisplayNumber = Integer.parseInt(DisplayText.getText());
+		float currentDisplayNumber = Float.parseFloat(DisplayText.getText());
 		numbersStack.add(currentDisplayNumber);
 	}
 
@@ -332,12 +332,12 @@ public class CalculatorFrame extends JFrame {
 			operationQueued = null;
 	}
 
-	private int ResolveOperation() {
+	private float ResolveOperation() {
 
 		if (numbersStack.isEmpty() || operationQueued == null) return GetDisplayNumber();
 		int lastNumberStackIndex = numbersStack.size() - 1;
-		int stackedNumber = numbersStack.get(lastNumberStackIndex);
-		int solution;
+		float stackedNumber = numbersStack.get(lastNumberStackIndex);
+		float solution;
 		try { solution = presenter.Operation(stackedNumber, GetDisplayNumber(), operationQueued);
 		} catch (Exception e) {
 			solution = 0;
@@ -350,9 +350,19 @@ public class CalculatorFrame extends JFrame {
 	}
 
 	private void ShowSolution() {
-		String solution = String.valueOf(ResolveOperation());
-		DisplayText.setText(solution);
+		
+		String displaySolution = GetFormattedSolution(ResolveOperation());
+		DisplayText.setText(displaySolution);
 		isAddingNumberToDisplay = false;
+	}
+	
+	private String GetFormattedSolution(float numericSolution)
+	{
+		String decimalSolution = Float.toString(numericSolution);
+		String roundSolution = String.valueOf((int)(numericSolution));	
+		int decimalPart =  Integer.parseInt(decimalSolution.substring(decimalSolution.indexOf('.') + 1));
+		
+		return decimalPart > 0 ? decimalSolution : roundSolution;
 	}
 	
 	private void ShowMessageError() {
