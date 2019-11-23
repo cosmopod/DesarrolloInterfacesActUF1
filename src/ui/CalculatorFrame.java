@@ -1,5 +1,7 @@
 package ui;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
@@ -33,7 +35,12 @@ public class CalculatorFrame extends JFrame {
 	 * Presenter
 	 */
 	private CalculatorPresenter presenter;
+
+	/**
+	 * Operations stack
+	 */
 	private CalculatorPresenter.OperationType operationQueued;
+	private List<Integer> numbersStack;
 
 	/**
 	 * Launch the application.
@@ -64,6 +71,7 @@ public class CalculatorFrame extends JFrame {
 		contentPane.setLayout(null);
 
 		presenter = new CalculatorPresenter();
+		numbersStack = new ArrayList<Integer>();
 
 		JPanel DisplayPanel = new JPanel();
 		DisplayPanel.setBounds(10, 11, 242, 48);
@@ -241,7 +249,7 @@ public class CalculatorFrame extends JFrame {
 	}
 
 	/**
-	 * Methods
+	 * UI Methods
 	 */
 	private void SetTextInDisplay(String text) {
 		if (DisplayText.getText().length() <= MAX_DISPLAY_NUMBERS) {
@@ -249,6 +257,11 @@ public class CalculatorFrame extends JFrame {
 		}
 	}
 
+	private int GetDisplayNumber() {
+		String displayText = DisplayText.getText();
+		return Integer.parseInt(displayText);
+	}
+	
 	private void SetNumberTodisplay(String num) {
 
 		String displayText = isAddingNumberToDisplay ? DisplayText.getText() + num : num;
@@ -258,5 +271,19 @@ public class CalculatorFrame extends JFrame {
 	private void ResetDisplay() {
 		isAddingNumberToDisplay = false;
 		DisplayText.setText("0");
+	}
+
+	/**
+	 * Operations Management
+	 */
+	private void AddToNumbersStack() {
+		int currentDisplayNumber = Integer.parseInt(DisplayText.getText());
+		numbersStack.add(currentDisplayNumber);
+	}
+
+	private void ClearNumbersStack() {
+		if (!numbersStack.isEmpty()) {
+			numbersStack.clear();
+		}
 	}
 }
