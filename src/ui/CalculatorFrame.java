@@ -261,7 +261,7 @@ public class CalculatorFrame extends JFrame {
 		String displayText = DisplayText.getText();
 		return Integer.parseInt(displayText);
 	}
-	
+
 	private void SetNumberTodisplay(String num) {
 
 		String displayText = isAddingNumberToDisplay ? DisplayText.getText() + num : num;
@@ -285,5 +285,17 @@ public class CalculatorFrame extends JFrame {
 		if (!numbersStack.isEmpty()) {
 			numbersStack.clear();
 		}
+	}
+
+	private int ResolveOperation() {
+
+		if (numbersStack.isEmpty() || operationQueued == null) return GetDisplayNumber();
+		int lastNumberStackIndex = numbersStack.size() - 1;
+		int stackedNumber = numbersStack.get(lastNumberStackIndex);
+		
+		int solution = presenter.Operation(stackedNumber, GetDisplayNumber(), operationQueued);
+		numbersStack.clear();
+		
+		return solution;
 	}
 }
