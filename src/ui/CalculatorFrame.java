@@ -298,11 +298,17 @@ public class CalculatorFrame extends JFrame {
 		});
 		OperationsPanel.add(btnExp);
 		
+		
 		JButton btnReset = new JButton("C");
 		btnReset.setFocusable(false);
 		btnReset.setForeground(new Color(255, 255, 255));
 		btnReset.setBackground(new Color(240, 128, 128));
 		btnReset.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Reset();
+			}
+		});
 		OperationsPanel.add(btnReset);
 	}
 
@@ -326,10 +332,6 @@ public class CalculatorFrame extends JFrame {
 		SetTextInDisplay(displayText);
 	}
 
-	private void ResetDisplay() {
-		isAddingNumberToDisplay = false;
-		DisplayText.setText("0");
-	}
 
 	private void BtnOperation(OperationType operationType) {
 		if (operationQueued != null)
@@ -352,7 +354,17 @@ public class CalculatorFrame extends JFrame {
 			numbersStack.clear();
 		}
 	}
-
+	
+	private void Reset() {
+		ResetDisplay();
+		ResetQueuedOperation();
+	}
+	
+	private void ResetDisplay() {
+		isAddingNumberToDisplay = false;
+		DisplayText.setText("0");
+	}
+	
 	private void ResetQueuedOperation() {
 		if (operationQueued != null)
 			operationQueued = null;
