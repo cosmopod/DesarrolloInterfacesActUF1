@@ -332,6 +332,10 @@ public class CalculatorFrame extends JFrame {
 		SetTextInDisplay(displayText);
 	}
 
+	private void ResetDisplay() {
+		isAddingNumberToDisplay = false;
+		DisplayText.setText("0");
+	}
 
 	private void BtnOperation(OperationType operationType) {
 		if (operationQueued != null)
@@ -358,11 +362,6 @@ public class CalculatorFrame extends JFrame {
 	private void Reset() {
 		ResetDisplay();
 		ResetQueuedOperation();
-	}
-	
-	private void ResetDisplay() {
-		isAddingNumberToDisplay = false;
-		DisplayText.setText("0");
 	}
 	
 	private void ResetQueuedOperation() {
