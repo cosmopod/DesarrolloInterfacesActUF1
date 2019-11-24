@@ -63,6 +63,7 @@ public class CalculatorFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public CalculatorFrame() {
+		setResizable(false);
 		setTitle("Calculadora");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -279,6 +280,12 @@ public class CalculatorFrame extends JFrame {
 			}
 		});
 		OperationsPanel.add(btnExp);
+		
+		JButton btnReset = new JButton("C");
+		btnReset.setForeground(new Color(255, 255, 255));
+		btnReset.setBackground(new Color(240, 128, 128));
+		btnReset.setFont(new Font("Tahoma", Font.BOLD, 16));
+		OperationsPanel.add(btnReset);
 	}
 
 	/**
