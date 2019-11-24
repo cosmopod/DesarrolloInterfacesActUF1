@@ -100,6 +100,7 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.setLayout(new GridLayout(4, 3, 1, 1));
 
 		JButton btnSeven = new JButton("7");
+		btnSeven.setFocusable(false);
 		btnSeven.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSeven.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -110,6 +111,7 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.add(btnSeven);
 
 		JButton btnEight = new JButton("8");
+		btnEight.setFocusable(false);
 		btnEight.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -120,6 +122,7 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.add(btnEight);
 
 		JButton btnNine = new JButton("9");
+		btnNine.setFocusable(false);
 		btnNine.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -130,6 +133,7 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.add(btnNine);
 
 		JButton btnFour = new JButton("4");
+		btnFour.setFocusable(false);
 		btnFour.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnFour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -140,6 +144,7 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.add(btnFour);
 
 		JButton btnFive = new JButton("5");
+		btnFive.setFocusable(false);
 		btnFive.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnFive.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -150,6 +155,7 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.add(btnFive);
 
 		JButton btnSix = new JButton("6");
+		btnSix.setFocusable(false);
 		btnSix.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSix.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -160,6 +166,7 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.add(btnSix);
 
 		JButton btnOne = new JButton("1");
+		btnOne.setFocusable(false);
 		btnOne.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -170,6 +177,7 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.add(btnOne);
 
 		JButton btnTwo = new JButton("2");
+		btnTwo.setFocusable(false);
 		btnTwo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnTwo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -180,6 +188,7 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.add(btnTwo);
 
 		JButton btnThree = new JButton("3");
+		btnThree.setFocusable(false);
 		btnThree.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnThree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -190,6 +199,7 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.add(btnThree);
 
 		JButton btnCE = new JButton("CE");
+		btnCE.setFocusable(false);
 		btnCE.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ResetDisplay();
@@ -199,6 +209,7 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.add(btnCE);
 
 		JButton btnZero = new JButton("0");
+		btnZero.setFocusable(false);
 		btnZero.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnZero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -209,6 +220,7 @@ public class CalculatorFrame extends JFrame {
 		NumbersPanel.add(btnZero);
 
 		JButton btnAns = new JButton("=");
+		btnAns.setFocusable(false);
 		btnAns.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAns.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -225,6 +237,7 @@ public class CalculatorFrame extends JFrame {
 		OperationsPanel.setLayout(new GridLayout(3, 2, 1, 1));
 
 		JButton btnSum = new JButton("+");
+		btnSum.setFocusable(false);
 		btnSum.setForeground(UIManager.getColor("Button.foreground"));
 		btnSum.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnSum.setBackground(new Color(204, 204, 255));
@@ -236,6 +249,7 @@ public class CalculatorFrame extends JFrame {
 		OperationsPanel.add(btnSum);
 
 		JButton btnSubs = new JButton("-");
+		btnSubs.setFocusable(false);
 		btnSubs.setForeground(UIManager.getColor("Button.foreground"));
 		btnSubs.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnSubs.setBackground(new Color(204, 204, 255));
@@ -247,6 +261,7 @@ public class CalculatorFrame extends JFrame {
 		OperationsPanel.add(btnSubs);
 
 		JButton btnMult = new JButton("x");
+		btnMult.setFocusable(false);
 		btnMult.setForeground(UIManager.getColor("Button.foreground"));
 		btnMult.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnMult.setBackground(new Color(204, 204, 255));
@@ -258,6 +273,7 @@ public class CalculatorFrame extends JFrame {
 		OperationsPanel.add(btnMult);
 
 		JButton btnDiv = new JButton("/");
+		btnDiv.setFocusable(false);
 		btnDiv.setForeground(UIManager.getColor("Button.foreground"));
 		btnDiv.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnDiv.setBackground(new Color(204, 204, 255));
@@ -269,6 +285,7 @@ public class CalculatorFrame extends JFrame {
 		OperationsPanel.add(btnDiv);
 
 		JButton btnExp = new JButton("Exp 2");
+		btnExp.setFocusable(false);
 		btnExp.setForeground(UIManager.getColor("Button.foreground"));
 		btnExp.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnExp.setBackground(new Color(204, 204, 255));
@@ -282,6 +299,7 @@ public class CalculatorFrame extends JFrame {
 		OperationsPanel.add(btnExp);
 		
 		JButton btnReset = new JButton("C");
+		btnReset.setFocusable(false);
 		btnReset.setForeground(new Color(255, 255, 255));
 		btnReset.setBackground(new Color(240, 128, 128));
 		btnReset.setFont(new Font("Tahoma", Font.BOLD, 16));
