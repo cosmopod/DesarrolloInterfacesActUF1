@@ -101,7 +101,7 @@ public class CalculatorFrame extends JFrame {
 
 		JButton btnSeven = new JButton("7");
 		btnSeven.setFocusable(false);
-		btnSeven.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnSeven.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnSeven.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SetNumberTodisplay(btnSeven.getText());
@@ -112,7 +112,7 @@ public class CalculatorFrame extends JFrame {
 
 		JButton btnEight = new JButton("8");
 		btnEight.setFocusable(false);
-		btnEight.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnEight.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnEight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SetNumberTodisplay(btnEight.getText());
@@ -123,7 +123,7 @@ public class CalculatorFrame extends JFrame {
 
 		JButton btnNine = new JButton("9");
 		btnNine.setFocusable(false);
-		btnNine.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNine.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SetNumberTodisplay(btnNine.getText());
@@ -134,7 +134,7 @@ public class CalculatorFrame extends JFrame {
 
 		JButton btnFour = new JButton("4");
 		btnFour.setFocusable(false);
-		btnFour.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnFour.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnFour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SetNumberTodisplay(btnFour.getText());
@@ -145,7 +145,7 @@ public class CalculatorFrame extends JFrame {
 
 		JButton btnFive = new JButton("5");
 		btnFive.setFocusable(false);
-		btnFive.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnFive.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnFive.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SetNumberTodisplay(btnFive.getText());
@@ -156,7 +156,7 @@ public class CalculatorFrame extends JFrame {
 
 		JButton btnSix = new JButton("6");
 		btnSix.setFocusable(false);
-		btnSix.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnSix.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnSix.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SetNumberTodisplay(btnSix.getText());
@@ -167,7 +167,7 @@ public class CalculatorFrame extends JFrame {
 
 		JButton btnOne = new JButton("1");
 		btnOne.setFocusable(false);
-		btnOne.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnOne.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SetNumberTodisplay(btnOne.getText());
@@ -178,7 +178,7 @@ public class CalculatorFrame extends JFrame {
 
 		JButton btnTwo = new JButton("2");
 		btnTwo.setFocusable(false);
-		btnTwo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnTwo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnTwo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SetNumberTodisplay(btnTwo.getText());
@@ -189,7 +189,7 @@ public class CalculatorFrame extends JFrame {
 
 		JButton btnThree = new JButton("3");
 		btnThree.setFocusable(false);
-		btnThree.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnThree.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnThree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SetNumberTodisplay(btnThree.getText());
@@ -205,12 +205,12 @@ public class CalculatorFrame extends JFrame {
 				ClearEntry();
 			}
 		});
-		btnCE.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCE.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		NumbersPanel.add(btnCE);
 
 		JButton btnZero = new JButton("0");
 		btnZero.setFocusable(false);
-		btnZero.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnZero.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnZero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SetNumberTodisplay(btnZero.getText());
@@ -221,7 +221,7 @@ public class CalculatorFrame extends JFrame {
 
 		JButton btnAns = new JButton("=");
 		btnAns.setFocusable(false);
-		btnAns.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAns.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnAns.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ShowSolution();
